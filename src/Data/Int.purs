@@ -27,7 +27,6 @@ import Prelude
 
 import Data.Int.Bits ((.&.))
 import Data.Maybe (Maybe(..), fromMaybe)
-import Global (infinity)
 
 import Math as Math
 
@@ -65,8 +64,8 @@ round = unsafeClamp <<< Math.round
 -- | This function will return 0 if the input is `NaN` or an `Infinity`.
 unsafeClamp :: Number -> Int
 unsafeClamp x
-  | x == infinity = 0
-  | x == -infinity = 0
+  | x == Math.infinity = 0
+  | x == -Math.infinity = 0
   | x >= toNumber top = top
   | x <= toNumber bottom = bottom
   | otherwise = fromMaybe 0 (fromNumber x)
