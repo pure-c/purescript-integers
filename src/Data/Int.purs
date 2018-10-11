@@ -64,6 +64,7 @@ round = unsafeClamp <<< Math.round
 -- | This function will return 0 if the input is `NaN` or an `Infinity`.
 unsafeClamp :: Number -> Int
 unsafeClamp x
+  | x /= x = 0 -- Must be NaN
   | x == Math.infinity = 0
   | x == -Math.infinity = 0
   | x >= toNumber top = top
